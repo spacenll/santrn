@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>Menu</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Alexandria', sans-serif;
+      background-color: #fdfdfd;
+      color: #333;
+      text-align: center;
+    }
+.madeby {
+  position: fixed;
+  bottom: 10px;
+  opacity: 0.6;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffffff;
+  color: #000000;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-family: sans-serif;
+}
+
+.madeby a {
+  color: orange;
+  text-decoration: none;
+}
+
+.madeby a:hover {
+  text-decoration: underline;
+}
+    
+    #welcome {
+      font-size: 30px;
+      padding-top: 25%;
+      direction: rtl;
+    }
+
+    #menuFrame {
+      height: 100vh;
+    }
+
+    #mobileNotice {
+      display: block;
+      padding: 40px;
+      font-size: 22px;
+    }
+
+    button {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+font-size: 30px;
+padding: 10px 20px;
+background-color: #8B5E3C;
+color: white;
+border: none;
+font-family: 'Alexandria', sans-serif;
+border-radius: 10px;
+cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #a06c47;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="welcome">
+    <img src="logo.png" alt="شعار خشب كافيه" />
+    <p>أهلاً بك في سارتن كافيه</p>
+    <p>Welcome to SANTRN Cafe</p>
+      <div id="mobileNotice">
+ 
+    <a href="http://spacenll.github.io/menu-cafe/menu.pdf" target="_blank">
+      <button>View Menu - عرض القائمة</button>
+    </a>
+      </div>
+  </div>
+
+  <div id="mobileNotice">
+ 
+    <a href="http://spacenll.github.io/menu-cafe/menu.pdf" target="_blank">
+      <button>View Menu - عرض القائمة</button>
+    </a>
+  </div>
+<div class="madeby">Develop by <a href="https://spacenll.site/" target="_blank">@spacenll</a></div>
+
+  <div id="menuFrame"></div>
+
+  <script>
+    function isMobile() {
+      return /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+    }
+
+    window.onload = function () {
+      // إخفاء شاشة الترحيب
+      setTimeout(() => {
+        
+
+        // كشف نوع الجهاز
+        if (isMobile()) {
+          // موبايل: أظهر زر التحميل
+          
+        } else {
+          // كمبيوتر: عرض PDF داخل الصفحة
+
+          PDFObject.embed("http://spacenll.github.io/menu-cafe/menu.pdf", "#menuFrame", {
+            pdfOpenParams: {
+              view: "FitH"
+            }
+          });
+        }
+      }, 1500);
+    };
+  </script>
+
+</body>
+</html>
